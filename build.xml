@@ -2,6 +2,10 @@
 <project name="SimpleEFA" default="build" basedir=".">
   <property file="build.properties" />
 
+  <presetdef name="javac">
+    <javac includeantruntime="false" />
+  </presetdef>
+
   <path id="project.class.path">
     <fileset dir="war/WEB-INF/lib" includes="**/*.jar"/>
   </path>
