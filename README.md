@@ -2,11 +2,19 @@
 
 A simplefied wrapper around EFA's XML interface
 
+TL;DR
+
+```
+ant war
+docker-compose build
+docker-compose up
+```
+
 ## Requirements ##
 
-* ant
-* tomcat installation
-* servlet-api.jar has to be in your CLASSPATH
+* docker
+* apache ant
+
 
 ## Installation ##
 
@@ -39,7 +47,7 @@ http://patrickbrosi.de/de/projects/simpleefa/
 The default output format is XML directly rendered from the result of an XQuery query. However, you can enforce JSON format by setting the GET parameter `format=JSON`, for example like this:
 
     http://localhost:10080/simpleefa/stationname?station=stuttgart%20hauptbahnhof&format=JSON
-    
+
 An optional GET parameter `callback` will wrap the outputted JSON to make it into JSONP:
 
     http://localhost:10080/simpleefa/stationname?station=stuttgart%20hauptbahnhof&format=JSON&callback=mycallback
