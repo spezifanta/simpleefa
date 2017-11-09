@@ -1,18 +1,19 @@
 # SimpleEFA #
 
-A simplefied wrapper around EFA's XML interface
+A simplefied wrapper around EFA's XML interface.
+Original fork: https://github.com/patrickbr/simpleefa
 
-TL;DR
+
+#TL;DR
+
 
 ```
-ant war
-docker-compose build
-docker-compose up
+ docker run --name simpleEFA --detached --publish 8080:8080 registry.qrt.int:15005/wally/vag-api
 ```
+
 
 ## Requirements ##
 
-* docker
 * apache ant
 
 
@@ -30,17 +31,21 @@ Configuration is done in in war/WEB-INF/simpleefa.properties. *Important*: you h
 
     common.efa_url = http://www.efa-bw.de/nvbw/
 
+
 ## Request Restrictions ##
 
 A poor-man's security mechanism to prevent mass-requests is built-in and can be configured via common.ipwhitelist and common.maxconnectionperhour.
+
 
 ## ISO-Encoding ##
 
 Most EFA-Installation expect request strings to be ISO-encoded. However, there are some newer installations that expect UTF8-encoding. To disable the default ISO-encoding of request parameters, set common.isoencoderequests = 0 in the properties file.
 
+
 ## Documentation ##
 
 http://patrickbrosi.de/de/projects/simpleefa/
+
 
 ## JSON-Output ##
 
@@ -51,6 +56,7 @@ The default output format is XML directly rendered from the result of an XQuery 
 An optional GET parameter `callback` will wrap the outputted JSON to make it into JSONP:
 
     http://localhost:10080/simpleefa/stationname?station=stuttgart%20hauptbahnhof&format=JSON&callback=mycallback
+
 
 ## License ##
 
