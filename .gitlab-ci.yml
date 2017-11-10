@@ -1,16 +1,29 @@
 image: docker:latest
 
+variables:
+  DOCKER_REGISTRY_IMAGE: index.docker.io/spezifanta/wally
+
 before_script:
   - apk update
   - apk add apache-ant
   - apk add openjdk8
-  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
 
-build-master:
+Build local Docker image:
   stage: build
   script:
     - ant war
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker build --pull -t "$CI_REGISTRY_IMAGE" .
     - docker push "$CI_REGISTRY_IMAGE"
+  only:
+    - master
+
+Build pulic Docker image:
+  stage: build
+  script:
+    - ant war
+    - docker login -u "$DOCKER_REGISTRY_USER" -p "$DOCKER_REGISTRY_PASSWORD" index.docker.io
+    - docker build --pull -t "$DOCKER_REGISTRY_IMAGE" .
+    - docker push "$DOCKER_REGISTRY_IMAGE"
   only:
     - master
