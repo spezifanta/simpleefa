@@ -3,12 +3,10 @@
 A simplefied wrapper around EFA's XML interface.
 Original fork: https://github.com/patrickbr/simpleefa
 
-
-# TL;DR
-
+## Quick Start
 
 ```
- docker run --name simpleEFA --detached --publish 8080:8080 registry.qrt.int:15005/wally/vag-api
+ docker run --name simpleEFA --detached --publish 8080:8080 spezifanta/docker
 ```
 
 
@@ -51,11 +49,11 @@ http://patrickbrosi.de/de/projects/simpleefa/
 
 The default output format is XML directly rendered from the result of an XQuery query. However, you can enforce JSON format by setting the GET parameter `format=JSON`, for example like this:
 
-    http://localhost:10080/simpleefa/stationname?station=stuttgart%20hauptbahnhof&format=JSON
+    http://localhost:8080/simpleefa/stationname?station=stuttgart%20hauptbahnhof&format=JSON
 
 An optional GET parameter `callback` will wrap the outputted JSON to make it into JSONP:
 
-    http://localhost:10080/simpleefa/stationname?station=stuttgart%20hauptbahnhof&format=JSON&callback=mycallback
+    http://localhost:8080/simpleefa/stationname?station=stuttgart%20hauptbahnhof&format=JSON&callback=mycallback
 
 
 ## License ##

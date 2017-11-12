@@ -1,6 +1,8 @@
 version: '3'
+
 services:
   simpleefa:
     build: .
+    image: spezifanta/wally
     ports:
       - '8080:8080'

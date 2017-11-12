@@ -1,7 +1,7 @@
 image: docker:latest
 
 variables:
-  DOCKER_REGISTRY_IMAGE: index.docker.io/spezifanta/wally
+  DOCKER_REGISTRY_IMAGE: spezifanta/wally
 
 before_script:
   - apk update
@@ -22,7 +22,7 @@ Build pulic Docker image:
   stage: build
   script:
     - ant war
-    - docker login -u "$DOCKER_REGISTRY_USER" -p "$DOCKER_REGISTRY_PASSWORD" index.docker.io
+    - docker login -u "$DOCKER_REGISTRY_USER" -p "$DOCKER_REGISTRY_PASSWORD"
     - docker build --pull -t "$DOCKER_REGISTRY_IMAGE" .
     - docker push "$DOCKER_REGISTRY_IMAGE"
   only:
